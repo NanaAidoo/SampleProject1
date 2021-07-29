@@ -11,7 +11,6 @@ namespace SampleProject1.Controllers
 {
     public class InvoiceController  : BaseController
     {
-
          private ApplicationDbContext _context ;
 
         public InvoiceController(ApplicationDbContext context)
