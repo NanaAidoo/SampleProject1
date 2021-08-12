@@ -9,7 +9,7 @@ namespace SampleProject1.Commands.Dtos
 
         public Decimal Amount {get; set;}
 
-        public Status PaymentStatus { get; set; }
+        public PaymentStatus PaymentStatus { get; set; }
 
         public DateTime PaymentDate { get; set; }
 
@@ -24,7 +24,7 @@ namespace SampleProject1.Commands.Dtos
 
         public Decimal Amount {get; set;}
 
-        public Status PaymentStatus { get; set; }
+        public string PaymentStatus { get; set; }
 
         public DateTime PaymentDate { get; set; }
 

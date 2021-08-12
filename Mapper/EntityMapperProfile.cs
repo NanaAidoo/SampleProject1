@@ -9,7 +9,8 @@ namespace SampleProject1.Mapper
         {
             CreateMap<Vendor, VendorDTO>();
             CreateMap<Vendor, VendorDetailsDTO>();
-            CreateMap<Payment, PaymentDTO>();
+            CreateMap<Payment, PaymentDTO>()
+            .ForMember(dest => dest.PaymentStatus, opt => opt.MapFrom(x => x.PaymentStatus.ToString()));
             CreateMap<Invoice, InvoiceDTO>()
             .ForMember(dest => dest.VendorInfo, opt => opt.MapFrom(x => x.Vendor));
             CreateMap<Invoice, InvoiceDetailsDTO>();
