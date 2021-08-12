@@ -5,6 +5,7 @@ using SampleProject1.Commands.Dtos;
 using SampleProject1.Data;
 using SampleProject1.Exceptions;
 
+
 namespace SampleProject1.Commands
 {
     public class AddPaymentCommand
@@ -56,13 +57,26 @@ namespace SampleProject1.Commands
             // source.PaymentDate = DateTime.Now
             // var destination = mapper.Map<Invoice, AddInvoiceDto>(source)
             
-
-             return new Payment()
+            var payment = new Payment()
              {
                  Invoice = existingInvoice,
                 PaymentDate = DateTime.Now,
-                 Amount = Dto.Amount
+                 Amount = Dto.Amount,
              };
+
+             
+            int result = DateTime.Compare(payment.PaymentDate, existingInvoice.DueDate);
+
+            if (result > 0)
+            {
+                payment.PaymentStatus = models.Enums.PaymentStatus.OverDue;
+            } else 
+            {
+                payment.PaymentStatus = models.Enums.PaymentStatus.OnTime;
+            }
+
+
+             return payment;
          }
 
          public void ValidateInput(AddPaymentCommand command)
